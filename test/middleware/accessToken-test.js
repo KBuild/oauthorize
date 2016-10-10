@@ -50,10 +50,10 @@ vows.describe('accessToken').addBatch({
         var self = this;
         var req = new MockRequest();
         req.user = { id: 'client-1234' };
-        req.authInfo = {};
-        req.authInfo.oauth = {};
-        req.authInfo.oauth.token = 'hdk48Djdsa'
-        req.authInfo.oauth.verifier = '473f82d3'
+        req.session = {};
+        req.session.oauth = {};
+        req.session.oauth.token = 'hdk48Djdsa'
+        req.session.oauth.verifier = '473f82d3'
         
         var res = new MockResponse();
         res.done = function() {
@@ -108,10 +108,10 @@ vows.describe('accessToken').addBatch({
         var self = this;
         var req = new MockRequest();
         req.client = { id: 'client-1234' };
-        req.authInfo = {};
-        req.authInfo.oauth = {};
-        req.authInfo.oauth.token = 'hdk48Djdsa'
-        req.authInfo.oauth.verifier = '473f82d3'
+        req.session = {};
+        req.session.oauth = {};
+        req.session.oauth.token = 'hdk48Djdsa'
+        req.session.oauth.verifier = '473f82d3'
         
         var res = new MockResponse();
         res.done = function() {
@@ -165,11 +165,11 @@ vows.describe('accessToken').addBatch({
         var self = this;
         var req = new MockRequest();
         req.user = { id: 'client-1234' };
-        req.authInfo = {};
-        req.authInfo.user = { id: 'user-1235' }
-        req.authInfo.oauth = {};
-        req.authInfo.oauth.token = 'hdk48Djdsa'
-        req.authInfo.oauth.verifier = '473f82d3'
+        req.session = {};
+        req.session.user = { id: 'user-1235' }
+        req.session.oauth = {};
+        req.session.oauth.token = 'hdk48Djdsa'
+        req.session.oauth.verifier = '473f82d3'
         
         var res = new MockResponse();
         res.done = function() {
@@ -223,10 +223,10 @@ vows.describe('accessToken').addBatch({
         var self = this;
         var req = new MockRequest();
         req.user = { id: 'client-1234' };
-        req.authInfo = {};
-        req.authInfo.oauth = {};
-        req.authInfo.oauth.token = 'hdk48Djdsa'
-        req.authInfo.oauth.verifier = '473f82d3'
+        req.session = {};
+        req.session.oauth = {};
+        req.session.oauth.token = 'hdk48Djdsa'
+        req.session.oauth.verifier = '473f82d3'
         
         var res = new MockResponse();
         res.done = function() {
@@ -272,10 +272,10 @@ vows.describe('accessToken').addBatch({
         var self = this;
         var req = new MockRequest();
         req.user = { id: 'client-1234' };
-        req.authInfo = {};
-        req.authInfo.oauth = {};
-        req.authInfo.oauth.token = 'hdk48Djdsa'
-        req.authInfo.oauth.verifier = '473f82d3'
+        req.session = {};
+        req.session.oauth = {};
+        req.session.oauth.token = 'hdk48Djdsa'
+        req.session.oauth.verifier = '473f82d3'
         
         var res = new MockResponse();
         res.done = function() {
@@ -318,10 +318,10 @@ vows.describe('accessToken').addBatch({
         var self = this;
         var req = new MockRequest();
         req.user = { id: 'client-1234' };
-        req.authInfo = {};
-        req.authInfo.oauth = {};
-        req.authInfo.oauth.token = 'hdk48Djdsa'
-        req.authInfo.oauth.verifier = '473f82d3'
+        req.session = {};
+        req.session.oauth = {};
+        req.session.oauth.token = 'hdk48Djdsa'
+        req.session.oauth.verifier = '473f82d3'
         
         var res = new MockResponse();
         res.done = function() {
@@ -364,10 +364,10 @@ vows.describe('accessToken').addBatch({
         var self = this;
         var req = new MockRequest();
         req.user = { id: 'client-1234' };
-        req.authInfo = {};
-        req.authInfo.oauth = {};
-        req.authInfo.oauth.token = 'hdk48Djdsa'
-        req.authInfo.oauth.verifier = '473f82d3'
+        req.session = {};
+        req.session.oauth = {};
+        req.session.oauth.token = 'hdk48Djdsa'
+        req.session.oauth.verifier = '473f82d3'
         
         var res = new MockResponse();
         res.done = function() {
@@ -408,10 +408,10 @@ vows.describe('accessToken').addBatch({
         var self = this;
         var req = new MockRequest();
         req.user = { id: 'client-1234' };
-        req.authInfo = {};
-        req.authInfo.oauth = {};
-        req.authInfo.oauth.token = 'hdk48Djdsa'
-        req.authInfo.oauth.verifier = '473f82d3'
+        req.session = {};
+        req.session.oauth = {};
+        req.session.oauth.token = 'hdk48Djdsa'
+        req.session.oauth.verifier = '473f82d3'
         
         var res = new MockResponse();
         res.done = function() {
@@ -435,7 +435,7 @@ vows.describe('accessToken').addBatch({
     },
   },
   
-  'middleware that handles a request without authInfo': {
+  'middleware that handles a request without session': {
     topic: function() {
       return accessToken(
         function(requestToken, verifier, done) {

@@ -72,19 +72,19 @@ vows.describe('userAuthorization').addBatch({
         assert.isUndefined(e);
       },
       'should add oauth transaction to req' : function(err, req, res, e) {
-        assert.isObject(req.oauth);
-        assert.isString(req.oauth.transactionID);
-        assert.lengthOf(req.oauth.transactionID, 8);
-        assert.equal(req.oauth.client.id, '1234');
-        assert.equal(req.oauth.client.name, 'Example');
-        assert.strictEqual(req.oauth.client, req.oauth.consumer);
-        assert.equal(req.oauth.callbackURL, 'http://example.com/auth/callback');
-        assert.equal(req.oauth.req.scope, 'write');
-        assert.equal(req.oauth.authz.token, 'aaaa-bbbb-cccc');
-        assert.isUndefined(req.oauth.authz.callbackURL);
+        assert.isObject(req.session.oauth);
+        assert.isString(req.session.oauth.transactionID);
+        assert.lengthOf(req.session.oauth.transactionID, 8);
+        assert.equal(req.session.oauth.client.id, '1234');
+        assert.equal(req.session.oauth.client.name, 'Example');
+        assert.strictEqual(req.session.oauth.client, req.session.oauth.consumer);
+        assert.equal(req.session.oauth.callbackURL, 'http://example.com/auth/callback');
+        assert.equal(req.session.oauth.req.scope, 'write');
+        assert.equal(req.session.oauth.authz.token, 'aaaa-bbbb-cccc');
+        assert.isUndefined(req.session.oauth.authz.callbackURL);
       },
       'should store transaction in session' : function(err, req, res, e) {
-        var tid = req.oauth.transactionID;
+        var tid = req.session.oauth.transactionID;
         assert.isObject(req.session['authorize'][tid]);
         assert.equal(req.session['authorize'][tid].protocol, 'oauth');
         assert.equal(req.session['authorize'][tid].client, '1234');
@@ -146,20 +146,20 @@ vows.describe('userAuthorization').addBatch({
         assert.isUndefined(e);
       },
       'should add oauth transaction to req' : function(err, req, res, e) {
-        assert.isObject(req.oauth);
-        assert.isString(req.oauth.transactionID);
-        assert.lengthOf(req.oauth.transactionID, 8);
-        assert.equal(req.oauth.client.id, '1234');
-        assert.equal(req.oauth.client.name, 'Example');
-        assert.strictEqual(req.oauth.client, req.oauth.consumer);
-        assert.equal(req.oauth.callbackURL, 'http://example.com/auth/callback');
-        assert.equal(req.oauth.req.scope, 'write');
-        assert.equal(req.oauth.authz.token, 'aaaa-bbbb-cccc');
-        assert.isUndefined(req.oauth.authz.callbackURL);
-        assert.equal(req.oauth.authz.foo, 'bar');
+        assert.isObject(req.session.oauth);
+        assert.isString(req.session.oauth.transactionID);
+        assert.lengthOf(req.session.oauth.transactionID, 8);
+        assert.equal(req.session.oauth.client.id, '1234');
+        assert.equal(req.session.oauth.client.name, 'Example');
+        assert.strictEqual(req.session.oauth.client, req.session.oauth.consumer);
+        assert.equal(req.session.oauth.callbackURL, 'http://example.com/auth/callback');
+        assert.equal(req.session.oauth.req.scope, 'write');
+        assert.equal(req.session.oauth.authz.token, 'aaaa-bbbb-cccc');
+        assert.isUndefined(req.session.oauth.authz.callbackURL);
+        assert.equal(req.session.oauth.authz.foo, 'bar');
       },
       'should store transaction in session' : function(err, req, res, e) {
-        var tid = req.oauth.transactionID;
+        var tid = req.session.oauth.transactionID;
         assert.isObject(req.session['authorize'][tid]);
         assert.equal(req.session['authorize'][tid].protocol, 'oauth');
         assert.equal(req.session['authorize'][tid].client, '1234');
@@ -221,20 +221,20 @@ vows.describe('userAuthorization').addBatch({
         assert.isUndefined(e);
       },
       'should add oauth transaction to req' : function(err, req, res, e) {
-        assert.isObject(req.oauth);
-        assert.isString(req.oauth.transactionID);
-        assert.lengthOf(req.oauth.transactionID, 8);
-        assert.equal(req.oauth.client.id, '1234');
-        assert.equal(req.oauth.client.name, 'Example');
-        assert.strictEqual(req.oauth.client, req.oauth.consumer);
-        assert.equal(req.oauth.callbackURL, 'http://example.com/auth/callback');
-        assert.equal(req.oauth.req.scope, 'write');
-        assert.equal(req.oauth.authz.token, 'aaaa-bbbb-cccc');
-        assert.equal(req.oauth.authz.callbackURL, 'http://example.com/auth/callback');
-        assert.equal(req.oauth.authz.foo, 'bar');
+        assert.isObject(req.session.oauth);
+        assert.isString(req.session.oauth.transactionID);
+        assert.lengthOf(req.session.oauth.transactionID, 8);
+        assert.equal(req.session.oauth.client.id, '1234');
+        assert.equal(req.session.oauth.client.name, 'Example');
+        assert.strictEqual(req.session.oauth.client, req.session.oauth.consumer);
+        assert.equal(req.session.oauth.callbackURL, 'http://example.com/auth/callback');
+        assert.equal(req.session.oauth.req.scope, 'write');
+        assert.equal(req.session.oauth.authz.token, 'aaaa-bbbb-cccc');
+        assert.equal(req.session.oauth.authz.callbackURL, 'http://example.com/auth/callback');
+        assert.equal(req.session.oauth.authz.foo, 'bar');
       },
       'should store transaction in session' : function(err, req, res, e) {
-        var tid = req.oauth.transactionID;
+        var tid = req.session.oauth.transactionID;
         assert.isObject(req.session['authorize'][tid]);
         assert.equal(req.session['authorize'][tid].protocol, 'oauth');
         assert.equal(req.session['authorize'][tid].client, '1234');
@@ -337,7 +337,7 @@ vows.describe('userAuthorization').addBatch({
         assert.equal(e.code, 'token_rejected');
       },
       'should set callbackURL on oauth transaction' : function(err, req, res, e) {
-        assert.equal(req.oauth.callbackURL, 'http://example.com/auth/callback');
+        assert.equal(req.session.oauth.callbackURL, 'http://example.com/auth/callback');
       },
     },
   },
@@ -526,19 +526,19 @@ vows.describe('userAuthorization').addBatch({
         assert.isUndefined(e);
       },
       'should add oauth transaction to req' : function(err, req, res, e) {
-        assert.isObject(req.oauth);
-        assert.isString(req.oauth.transactionID);
-        assert.lengthOf(req.oauth.transactionID, 12);
-        assert.equal(req.oauth.client.id, '1234');
-        assert.equal(req.oauth.client.name, 'Example');
-        assert.strictEqual(req.oauth.client, req.oauth.consumer);
-        assert.equal(req.oauth.callbackURL, 'http://example.com/auth/callback');
-        assert.equal(req.oauth.req.scope, 'write');
-        assert.equal(req.oauth.authz.token, 'aaaa-bbbb-cccc');
-        assert.isUndefined(req.oauth.authz.callbackURL);
+        assert.isObject(req.session.oauth);
+        assert.isString(req.session.oauth.transactionID);
+        assert.lengthOf(req.session.oauth.transactionID, 12);
+        assert.equal(req.session.oauth.client.id, '1234');
+        assert.equal(req.session.oauth.client.name, 'Example');
+        assert.strictEqual(req.session.oauth.client, req.session.oauth.consumer);
+        assert.equal(req.session.oauth.callbackURL, 'http://example.com/auth/callback');
+        assert.equal(req.session.oauth.req.scope, 'write');
+        assert.equal(req.session.oauth.authz.token, 'aaaa-bbbb-cccc');
+        assert.isUndefined(req.session.oauth.authz.callbackURL);
       },
       'should store transaction in session' : function(err, req, res, e) {
-        var tid = req.oauth.transactionID;
+        var tid = req.session.oauth.transactionID;
         assert.isObject(req.session['authorize'][tid]);
         assert.equal(req.session['authorize'][tid].protocol, 'oauth');
         assert.equal(req.session['authorize'][tid].client, '1234');
@@ -592,19 +592,19 @@ vows.describe('userAuthorization').addBatch({
         assert.isUndefined(e);
       },
       'should add oauth transaction to req' : function(err, req, res, e) {
-        assert.isObject(req.oauth);
-        assert.isString(req.oauth.transactionID);
-        assert.lengthOf(req.oauth.transactionID, 8);
-        assert.equal(req.oauth.client.id, '1234');
-        assert.equal(req.oauth.client.name, 'Example');
-        assert.strictEqual(req.oauth.client, req.oauth.consumer);
-        assert.equal(req.oauth.callbackURL, 'http://example.com/auth/callback');
-        assert.equal(req.oauth.req.scope, 'write');
-        assert.equal(req.oauth.authz.token, 'aaaa-bbbb-cccc');
-        assert.isUndefined(req.oauth.authz.callbackURL);
+        assert.isObject(req.session.oauth);
+        assert.isString(req.session.oauth.transactionID);
+        assert.lengthOf(req.session.oauth.transactionID, 8);
+        assert.equal(req.session.oauth.client.id, '1234');
+        assert.equal(req.session.oauth.client.name, 'Example');
+        assert.strictEqual(req.session.oauth.client, req.session.oauth.consumer);
+        assert.equal(req.session.oauth.callbackURL, 'http://example.com/auth/callback');
+        assert.equal(req.session.oauth.req.scope, 'write');
+        assert.equal(req.session.oauth.authz.token, 'aaaa-bbbb-cccc');
+        assert.isUndefined(req.session.oauth.authz.callbackURL);
       },
       'should store transaction in session' : function(err, req, res, e) {
-        var tid = req.oauth.transactionID;
+        var tid = req.session.oauth.transactionID;
         assert.isObject(req.session['oauthz'][tid]);
         assert.equal(req.session['oauthz'][tid].protocol, 'oauth');
         assert.equal(req.session['oauthz'][tid].client, '1234');

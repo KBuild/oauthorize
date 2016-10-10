@@ -74,7 +74,7 @@ passport.use('consumer', new ConsumerStrategy(
   // argument to the callback.  A request token will often have associated
   // details such as the user who approved it, scope of access, etc.  These
   // details can be retrieved from the database during this step.  They will
-  // then be made available by Passport at `req.authInfo` and carried through to
+  // then be made available by Passport at `req.session` and carried through to
   // other middleware and request handlers, avoiding the need to do additional
   // unnecessary queries to the database.
   function(requestToken, done) {
@@ -134,7 +134,7 @@ passport.use('token', new TokenStrategy(
   // argument to the callback.  An access token will often have associated
   // details such as scope of access, expiration date, etc.  These details can
   // be retrieved from the database during this step.  They will then be made
-  // available by Passport at `req.authInfo` and carried through to other
+  // available by Passport at `req.session` and carried through to other
   // middleware and request handlers, avoiding the need to do additional
   // unnecessary queries to the database.
   //

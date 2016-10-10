@@ -69,16 +69,16 @@ vows.describe('transactionLoader').addBatch({
         assert.isUndefined(e);
       },
       'should restore transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth);
-        assert.equal(req.oauth.transactionID, '1234');
-        assert.equal(req.oauth.client.id, '1');
-        assert.equal(req.oauth.client.name, 'Example');
-        assert.strictEqual(req.oauth.client, req.oauth.consumer);
-        assert.equal(req.oauth.callbackURL, 'http://www.example.com/auth/callback');
-        assert.equal(req.oauth.req.callbackURL, 'http://www.example.com/auth/callback');
-        assert.equal(req.oauth.req.foo, 'bar');
-        assert.equal(req.oauth.authz.token, 'aaaa-bbbb-cccc');
-        assert.equal(req.oauth.authz.scope, 'write');
+        assert.isObject(req.session.oauth);
+        assert.equal(req.session.oauth.transactionID, '1234');
+        assert.equal(req.session.oauth.client.id, '1');
+        assert.equal(req.session.oauth.client.name, 'Example');
+        assert.strictEqual(req.session.oauth.client, req.session.oauth.consumer);
+        assert.equal(req.session.oauth.callbackURL, 'http://www.example.com/auth/callback');
+        assert.equal(req.session.oauth.req.callbackURL, 'http://www.example.com/auth/callback');
+        assert.equal(req.session.oauth.req.foo, 'bar');
+        assert.equal(req.session.oauth.authz.token, 'aaaa-bbbb-cccc');
+        assert.equal(req.session.oauth.authz.scope, 'write');
       },
       'should leave transaction in session' : function(err, req, res, e) {
         assert.isObject(req.session['authorize']['1234']);
@@ -130,16 +130,16 @@ vows.describe('transactionLoader').addBatch({
         assert.isUndefined(e);
       },
       'should restore transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth);
-        assert.equal(req.oauth.transactionID, '1234');
-        assert.equal(req.oauth.client.id, '1');
-        assert.equal(req.oauth.client.name, 'Example');
-        assert.strictEqual(req.oauth.client, req.oauth.consumer);
-        assert.equal(req.oauth.callbackURL, 'http://www.example.com/auth/callback');
-        assert.equal(req.oauth.req.callbackURL, 'http://www.example.com/auth/callback');
-        assert.equal(req.oauth.req.foo, 'bar');
-        assert.equal(req.oauth.authz.token, 'aaaa-bbbb-cccc');
-        assert.equal(req.oauth.authz.scope, 'write');
+        assert.isObject(req.session.oauth);
+        assert.equal(req.session.oauth.transactionID, '1234');
+        assert.equal(req.session.oauth.client.id, '1');
+        assert.equal(req.session.oauth.client.name, 'Example');
+        assert.strictEqual(req.session.oauth.client, req.session.oauth.consumer);
+        assert.equal(req.session.oauth.callbackURL, 'http://www.example.com/auth/callback');
+        assert.equal(req.session.oauth.req.callbackURL, 'http://www.example.com/auth/callback');
+        assert.equal(req.session.oauth.req.foo, 'bar');
+        assert.equal(req.session.oauth.authz.token, 'aaaa-bbbb-cccc');
+        assert.equal(req.session.oauth.authz.scope, 'write');
       },
       'should leave transaction in session' : function(err, req, res, e) {
         assert.isObject(req.session['authorize']['1234']);
@@ -191,16 +191,16 @@ vows.describe('transactionLoader').addBatch({
         assert.isUndefined(e);
       },
       'should restore transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth);
-        assert.equal(req.oauth.transactionID, '1234');
-        assert.equal(req.oauth.client.id, '1');
-        assert.equal(req.oauth.client.name, 'Example');
-        assert.strictEqual(req.oauth.client, req.oauth.consumer);
-        assert.equal(req.oauth.callbackURL, 'http://www.example.com/auth/callback');
-        assert.equal(req.oauth.req.callbackURL, 'http://www.example.com/auth/callback');
-        assert.equal(req.oauth.req.foo, 'bar');
-        assert.equal(req.oauth.authz.token, 'aaaa-bbbb-cccc');
-        assert.equal(req.oauth.authz.scope, 'write');
+        assert.isObject(req.session.oauth);
+        assert.equal(req.session.oauth.transactionID, '1234');
+        assert.equal(req.session.oauth.client.id, '1');
+        assert.equal(req.session.oauth.client.name, 'Example');
+        assert.strictEqual(req.session.oauth.client, req.session.oauth.consumer);
+        assert.equal(req.session.oauth.callbackURL, 'http://www.example.com/auth/callback');
+        assert.equal(req.session.oauth.req.callbackURL, 'http://www.example.com/auth/callback');
+        assert.equal(req.session.oauth.req.foo, 'bar');
+        assert.equal(req.session.oauth.authz.token, 'aaaa-bbbb-cccc');
+        assert.equal(req.session.oauth.authz.scope, 'write');
       },
       'should leave transaction in session' : function(err, req, res, e) {
         assert.isObject(req.session['authorize']['1234']);
@@ -252,16 +252,16 @@ vows.describe('transactionLoader').addBatch({
         assert.isUndefined(e);
       },
       'should restore transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth);
-        assert.equal(req.oauth.transactionID, '1234');
-        assert.equal(req.oauth.client.id, '1');
-        assert.equal(req.oauth.client.name, 'Example');
-        assert.strictEqual(req.oauth.client, req.oauth.consumer);
-        assert.equal(req.oauth.callbackURL, 'http://www.example.com/auth/callback');
-        assert.equal(req.oauth.req.callbackURL, 'http://www.example.com/auth/callback');
-        assert.equal(req.oauth.req.foo, 'bar');
-        assert.equal(req.oauth.authz.token, 'aaaa-bbbb-cccc');
-        assert.equal(req.oauth.authz.scope, 'write');
+        assert.isObject(req.session.oauth);
+        assert.equal(req.session.oauth.transactionID, '1234');
+        assert.equal(req.session.oauth.client.id, '1');
+        assert.equal(req.session.oauth.client.name, 'Example');
+        assert.strictEqual(req.session.oauth.client, req.session.oauth.consumer);
+        assert.equal(req.session.oauth.callbackURL, 'http://www.example.com/auth/callback');
+        assert.equal(req.session.oauth.req.callbackURL, 'http://www.example.com/auth/callback');
+        assert.equal(req.session.oauth.req.foo, 'bar');
+        assert.equal(req.session.oauth.authz.token, 'aaaa-bbbb-cccc');
+        assert.equal(req.session.oauth.authz.scope, 'write');
       },
       'should leave transaction in session' : function(err, req, res, e) {
         assert.isObject(req.session['oauthorize']['1234']);
@@ -315,7 +315,7 @@ vows.describe('transactionLoader').addBatch({
         assert.equal(e.code, 'consumer_key_rejected');
       },
       'should not restore transaction' : function(err, req, res, e) {
-        assert.isUndefined(req.oauth);
+        assert.isUndefined(req.session.oauth);
       },
       'should remove transaction from session' : function(err, req, res, e) {
         assert.isUndefined(req.session['authorize']['1234']);
@@ -367,7 +367,7 @@ vows.describe('transactionLoader').addBatch({
         assert.instanceOf(e, Error);
       },
       'should not restore transaction' : function(err, req, res, e) {
-        assert.isUndefined(req.oauth);
+        assert.isUndefined(req.session.oauth);
       },
       'should leave transaction in session' : function(err, req, res, e) {
         assert.isObject(req.session['authorize']['1234']);
@@ -412,7 +412,7 @@ vows.describe('transactionLoader').addBatch({
         assert.isUndefined(e);
       },
       'should not restore transaction' : function(err, req, res, e) {
-        assert.isUndefined(req.oauth);
+        assert.isUndefined(req.session.oauth);
       },
     },
   },
@@ -455,7 +455,7 @@ vows.describe('transactionLoader').addBatch({
         assert.isUndefined(e);
       },
       'should not restore transaction' : function(err, req, res, e) {
-        assert.isUndefined(req.oauth);
+        assert.isUndefined(req.session.oauth);
       },
     },
   },
@@ -496,7 +496,7 @@ vows.describe('transactionLoader').addBatch({
         assert.instanceOf(e, Error);
       },
       'should not restore transaction' : function(err, req, res, e) {
-        assert.isUndefined(req.oauth);
+        assert.isUndefined(req.session.oauth);
       },
     },
   },
@@ -538,7 +538,7 @@ vows.describe('transactionLoader').addBatch({
         assert.instanceOf(e, Error);
       },
       'should not restore transaction' : function(err, req, res, e) {
-        assert.isUndefined(req.oauth);
+        assert.isUndefined(req.session.oauth);
       },
     },
   },

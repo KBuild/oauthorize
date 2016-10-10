@@ -56,10 +56,10 @@ vows.describe('userDecision').addBatch({
         req.session['authorize'] = {};
         req.session['authorize']['abc123'] = { protocol: 'oauth' };
         req.user = { id: 'u1234', username: 'bob' };
-        req.oauth = {};
-        req.oauth.transactionID = 'abc123';
-        req.oauth.callbackURL = 'http://example.com/auth/callback';
-        req.oauth.authz = { token: 'aaaa-bbbb-cccc' }
+        req.session.oauth = {};
+        req.session.oauth.transactionID = 'abc123';
+        req.session.oauth.callbackURL = 'http://example.com/auth/callback';
+        req.session.oauth.authz = { token: 'aaaa-bbbb-cccc' }
         
         var res = new MockResponse();
         res.done = function() {
@@ -81,13 +81,13 @@ vows.describe('userDecision').addBatch({
         assert.isUndefined(e);
       },
       'should set user on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.user);
-        assert.equal(req.oauth.user.id, 'u1234');
-        assert.equal(req.oauth.user.username, 'bob');
+        assert.isObject(req.session.oauth.user);
+        assert.equal(req.session.oauth.user.id, 'u1234');
+        assert.equal(req.session.oauth.user.username, 'bob');
       },
       'should set res on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.res);
-        assert.isTrue(req.oauth.res.allow);
+        assert.isObject(req.session.oauth.res);
+        assert.isTrue(req.session.oauth.res.allow);
       },
       'should redirect to callbackURL' : function(err, req, res, e) {
         assert.equal(res._redirect, 'http://example.com/auth/callback?oauth_token=aaaa-bbbb-cccc&oauth_verifier=barx');
@@ -124,10 +124,10 @@ vows.describe('userDecision').addBatch({
         req.session['authorize'] = {};
         req.session['authorize']['abc123'] = { protocol: 'oauth' };
         req.user = { id: 'u1234', username: 'bob' };
-        req.oauth = {};
-        req.oauth.transactionID = 'abc123';
-        req.oauth.callbackURL = 'http://example.com/auth/callback';
-        req.oauth.authz = { token: 'aaaa-bbbb-cccc' }
+        req.session.oauth = {};
+        req.session.oauth.transactionID = 'abc123';
+        req.session.oauth.callbackURL = 'http://example.com/auth/callback';
+        req.session.oauth.authz = { token: 'aaaa-bbbb-cccc' }
         
         var res = new MockResponse();
         res.done = function() {
@@ -149,13 +149,13 @@ vows.describe('userDecision').addBatch({
         assert.isUndefined(e);
       },
       'should set user on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.user);
-        assert.equal(req.oauth.user.id, 'u1234');
-        assert.equal(req.oauth.user.username, 'bob');
+        assert.isObject(req.session.oauth.user);
+        assert.equal(req.session.oauth.user.id, 'u1234');
+        assert.equal(req.session.oauth.user.username, 'bob');
       },
       'should set res on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.res);
-        assert.isTrue(req.oauth.res.allow);
+        assert.isObject(req.session.oauth.res);
+        assert.isTrue(req.session.oauth.res.allow);
       },
       'should redirect to callbackURL' : function(err, req, res, e) {
         assert.equal(res._redirect, 'http://example.com/auth/callback?oauth_token=aaaa-bbbb-cccc&oauth_verifier=barx');
@@ -192,9 +192,9 @@ vows.describe('userDecision').addBatch({
         req.session['authorize'] = {};
         req.session['authorize']['abc123'] = { protocol: 'oauth' };
         req.user = { id: 'u1234', username: 'bob' };
-        req.oauth = {};
-        req.oauth.transactionID = 'abc123';
-        req.oauth.authz = { token: 'aaaa-bbbb-cccc' }
+        req.session.oauth = {};
+        req.session.oauth.transactionID = 'abc123';
+        req.session.oauth.authz = { token: 'aaaa-bbbb-cccc' }
         
         var res = new MockResponse();
         res.done = function() {
@@ -217,16 +217,16 @@ vows.describe('userDecision').addBatch({
         assert.isUndefined(e);
       },
       'should set user on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.user);
-        assert.equal(req.oauth.user.id, 'u1234');
-        assert.equal(req.oauth.user.username, 'bob');
+        assert.isObject(req.session.oauth.user);
+        assert.equal(req.session.oauth.user.id, 'u1234');
+        assert.equal(req.session.oauth.user.username, 'bob');
       },
       'should set res on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.res);
-        assert.isTrue(req.oauth.res.allow);
+        assert.isObject(req.session.oauth.res);
+        assert.isTrue(req.session.oauth.res.allow);
       },
       'should set verifier on transaction' : function(err, req, res, e) {
-        assert.equal(req.oauth.verifier, 'barx');
+        assert.equal(req.session.oauth.verifier, 'barx');
       },
       'should not redirect to callbackURL' : function(err, req, res, e) {
         assert.isUndefined(res._redirect);
@@ -266,10 +266,10 @@ vows.describe('userDecision').addBatch({
         req.session['authorize'] = {};
         req.session['authorize']['abc123'] = { protocol: 'oauth' };
         req.user = { id: 'u1234', username: 'bob' };
-        req.oauth = {};
-        req.oauth.transactionID = 'abc123';
-        req.oauth.callbackURL = 'http://example.com/auth/callback';
-        req.oauth.authz = { token: 'aaaa-bbbb-cccc' }
+        req.session.oauth = {};
+        req.session.oauth.transactionID = 'abc123';
+        req.session.oauth.callbackURL = 'http://example.com/auth/callback';
+        req.session.oauth.authz = { token: 'aaaa-bbbb-cccc' }
         
         var res = new MockResponse();
         res.done = function() {
@@ -292,13 +292,13 @@ vows.describe('userDecision').addBatch({
         assert.isUndefined(e);
       },
       'should set user on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.user);
-        assert.equal(req.oauth.user.id, 'u1234');
-        assert.equal(req.oauth.user.username, 'bob');
+        assert.isObject(req.session.oauth.user);
+        assert.equal(req.session.oauth.user.id, 'u1234');
+        assert.equal(req.session.oauth.user.username, 'bob');
       },
       'should set res on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.res);
-        assert.isFalse(req.oauth.res.allow);
+        assert.isObject(req.session.oauth.res);
+        assert.isFalse(req.session.oauth.res.allow);
       },
       'should redirect to callbackURL' : function(err, req, res, e) {
         assert.equal(res._redirect, 'http://example.com/auth/callback?oauth_problem=user_refused');
@@ -338,9 +338,9 @@ vows.describe('userDecision').addBatch({
         req.session['authorize'] = {};
         req.session['authorize']['abc123'] = { protocol: 'oauth' };
         req.user = { id: 'u1234', username: 'bob' };
-        req.oauth = {};
-        req.oauth.transactionID = 'abc123';
-        req.oauth.authz = { token: 'aaaa-bbbb-cccc' }
+        req.session.oauth = {};
+        req.session.oauth.transactionID = 'abc123';
+        req.session.oauth.authz = { token: 'aaaa-bbbb-cccc' }
         
         var res = new MockResponse();
         res.done = function() {
@@ -363,13 +363,13 @@ vows.describe('userDecision').addBatch({
         assert.isUndefined(e);
       },
       'should set user on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.user);
-        assert.equal(req.oauth.user.id, 'u1234');
-        assert.equal(req.oauth.user.username, 'bob');
+        assert.isObject(req.session.oauth.user);
+        assert.equal(req.session.oauth.user.id, 'u1234');
+        assert.equal(req.session.oauth.user.username, 'bob');
       },
       'should set res on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.res);
-        assert.isFalse(req.oauth.res.allow);
+        assert.isObject(req.session.oauth.res);
+        assert.isFalse(req.session.oauth.res.allow);
       },
       'should not redirect to callbackURL' : function(err, req, res, e) {
         assert.isUndefined(res._redirect);
@@ -409,10 +409,10 @@ vows.describe('userDecision').addBatch({
         req.session['authorize'] = {};
         req.session['authorize']['abc123'] = { protocol: 'oauth' };
         req.user = { id: 'u1234', username: 'bob' };
-        req.oauth = {};
-        req.oauth.transactionID = 'abc123';
-        req.oauth.callbackURL = 'http://example.com/auth/callback';
-        req.oauth.authz = { token: 'aaaa-bbbb-cccc' }
+        req.session.oauth = {};
+        req.session.oauth.transactionID = 'abc123';
+        req.session.oauth.callbackURL = 'http://example.com/auth/callback';
+        req.session.oauth.authz = { token: 'aaaa-bbbb-cccc' }
         
         var res = new MockResponse();
         res.done = function() {
@@ -435,13 +435,13 @@ vows.describe('userDecision').addBatch({
         assert.isUndefined(e);
       },
       'should set user on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.user);
-        assert.equal(req.oauth.user.id, 'u1234');
-        assert.equal(req.oauth.user.username, 'bob');
+        assert.isObject(req.session.oauth.user);
+        assert.equal(req.session.oauth.user.id, 'u1234');
+        assert.equal(req.session.oauth.user.username, 'bob');
       },
       'should set res on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.res);
-        assert.isFalse(req.oauth.res.allow);
+        assert.isObject(req.session.oauth.res);
+        assert.isFalse(req.session.oauth.res.allow);
       },
       'should not redirect to callbackURL' : function(err, req, res, e) {
         assert.isUndefined(res._redirect);
@@ -481,10 +481,10 @@ vows.describe('userDecision').addBatch({
         req.session['authorize'] = {};
         req.session['authorize']['abc123'] = { protocol: 'oauth' };
         req.user = { id: 'u1234', username: 'bob' };
-        req.oauth = {};
-        req.oauth.transactionID = 'abc123';
-        req.oauth.callbackURL = 'http://example.com/auth/callback';
-        req.oauth.authz = { token: 'aaaa-bbbb-cccc' }
+        req.session.oauth = {};
+        req.session.oauth.transactionID = 'abc123';
+        req.session.oauth.callbackURL = 'http://example.com/auth/callback';
+        req.session.oauth.authz = { token: 'aaaa-bbbb-cccc' }
         
         var res = new MockResponse();
         res.done = function() {
@@ -506,13 +506,13 @@ vows.describe('userDecision').addBatch({
         assert.isUndefined(e);
       },
       'should set user on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.user);
-        assert.equal(req.oauth.user.id, 'u1234');
-        assert.equal(req.oauth.user.username, 'bob');
+        assert.isObject(req.session.oauth.user);
+        assert.equal(req.session.oauth.user.id, 'u1234');
+        assert.equal(req.session.oauth.user.username, 'bob');
       },
       'should set res on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.res);
-        assert.isTrue(req.oauth.res.allow);
+        assert.isObject(req.session.oauth.res);
+        assert.isTrue(req.session.oauth.res.allow);
       },
       'should redirect to callbackURL' : function(err, req, res, e) {
         assert.equal(res._redirect, 'http://example.com/auth/callback?oauth_token=aaaa-bbbb-cccc');
@@ -553,10 +553,10 @@ vows.describe('userDecision').addBatch({
         req.session['authorize'] = {};
         req.session['authorize']['abc123'] = { protocol: 'oauth' };
         req.user = { id: 'u1234', username: 'bob' };
-        req.oauth = {};
-        req.oauth.transactionID = 'abc123';
-        req.oauth.callbackURL = 'http://example.com/auth/callback';
-        req.oauth.authz = { token: 'aaaa-bbbb-cccc' }
+        req.session.oauth = {};
+        req.session.oauth.transactionID = 'abc123';
+        req.session.oauth.callbackURL = 'http://example.com/auth/callback';
+        req.session.oauth.authz = { token: 'aaaa-bbbb-cccc' }
         
         var res = new MockResponse();
         res.done = function() {
@@ -578,14 +578,14 @@ vows.describe('userDecision').addBatch({
         assert.isUndefined(e);
       },
       'should set user on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.user);
-        assert.equal(req.oauth.user.id, 'u1234');
-        assert.equal(req.oauth.user.username, 'bob');
+        assert.isObject(req.session.oauth.user);
+        assert.equal(req.session.oauth.user.id, 'u1234');
+        assert.equal(req.session.oauth.user.username, 'bob');
       },
       'should set res on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.res);
-        assert.isTrue(req.oauth.res.allow);
-        assert.equal(req.oauth.res.scope, 'write');
+        assert.isObject(req.session.oauth.res);
+        assert.isTrue(req.session.oauth.res.allow);
+        assert.equal(req.session.oauth.res.scope, 'write');
       },
       'should redirect to callbackURL' : function(err, req, res, e) {
         assert.equal(res._redirect, 'http://example.com/auth/callback?oauth_token=aaaa-bbbb-cccc&oauth_verifier=barx');
@@ -626,10 +626,10 @@ vows.describe('userDecision').addBatch({
         req.session['authorize'] = {};
         req.session['authorize']['abc123'] = { protocol: 'oauth' };
         req.user = { id: 'u1234', username: 'bob' };
-        req.oauth = {};
-        req.oauth.transactionID = 'abc123';
-        req.oauth.callbackURL = 'http://example.com/auth/callback';
-        req.oauth.authz = { token: 'aaaa-bbbb-cccc' }
+        req.session.oauth = {};
+        req.session.oauth.transactionID = 'abc123';
+        req.session.oauth.callbackURL = 'http://example.com/auth/callback';
+        req.session.oauth.authz = { token: 'aaaa-bbbb-cccc' }
         
         var res = new MockResponse();
         res.done = function() {
@@ -652,13 +652,13 @@ vows.describe('userDecision').addBatch({
         assert.isUndefined(e);
       },
       'should set user on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.user);
-        assert.equal(req.oauth.user.id, 'u1234');
-        assert.equal(req.oauth.user.username, 'bob');
+        assert.isObject(req.session.oauth.user);
+        assert.equal(req.session.oauth.user.id, 'u1234');
+        assert.equal(req.session.oauth.user.username, 'bob');
       },
       'should set res on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.res);
-        assert.isFalse(req.oauth.res.allow);
+        assert.isObject(req.session.oauth.res);
+        assert.isFalse(req.session.oauth.res.allow);
       },
       'should redirect to callbackURL' : function(err, req, res, e) {
         assert.equal(res._redirect, 'http://example.com/auth/callback?oauth_problem=user_refused');
@@ -694,10 +694,10 @@ vows.describe('userDecision').addBatch({
         req.session['authorize'] = {};
         req.session['authorize']['abc123'] = { protocol: 'oauth' };
         req.otheruser = { id: 'u1234', username: 'bob' };
-        req.oauth = {};
-        req.oauth.transactionID = 'abc123';
-        req.oauth.callbackURL = 'http://example.com/auth/callback';
-        req.oauth.authz = { token: 'aaaa-bbbb-cccc' }
+        req.session.oauth = {};
+        req.session.oauth.transactionID = 'abc123';
+        req.session.oauth.callbackURL = 'http://example.com/auth/callback';
+        req.session.oauth.authz = { token: 'aaaa-bbbb-cccc' }
         
         var res = new MockResponse();
         res.done = function() {
@@ -719,13 +719,13 @@ vows.describe('userDecision').addBatch({
         assert.isUndefined(e);
       },
       'should set user on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.user);
-        assert.equal(req.oauth.user.id, 'u1234');
-        assert.equal(req.oauth.user.username, 'bob');
+        assert.isObject(req.session.oauth.user);
+        assert.equal(req.session.oauth.user.id, 'u1234');
+        assert.equal(req.session.oauth.user.username, 'bob');
       },
       'should set res on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.res);
-        assert.isTrue(req.oauth.res.allow);
+        assert.isObject(req.session.oauth.res);
+        assert.isTrue(req.session.oauth.res.allow);
       },
       'should redirect to callbackURL' : function(err, req, res, e) {
         assert.equal(res._redirect, 'http://example.com/auth/callback?oauth_token=aaaa-bbbb-cccc&oauth_verifier=barx');
@@ -758,10 +758,10 @@ vows.describe('userDecision').addBatch({
         req.session['oauthorize'] = {};
         req.session['oauthorize']['abc123'] = { protocol: 'oauth' };
         req.user = { id: 'u1234', username: 'bob' };
-        req.oauth = {};
-        req.oauth.transactionID = 'abc123';
-        req.oauth.callbackURL = 'http://example.com/auth/callback';
-        req.oauth.authz = { token: 'aaaa-bbbb-cccc' }
+        req.session.oauth = {};
+        req.session.oauth.transactionID = 'abc123';
+        req.session.oauth.callbackURL = 'http://example.com/auth/callback';
+        req.session.oauth.authz = { token: 'aaaa-bbbb-cccc' }
         
         var res = new MockResponse();
         res.done = function() {
@@ -783,13 +783,13 @@ vows.describe('userDecision').addBatch({
         assert.isUndefined(e);
       },
       'should set user on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.user);
-        assert.equal(req.oauth.user.id, 'u1234');
-        assert.equal(req.oauth.user.username, 'bob');
+        assert.isObject(req.session.oauth.user);
+        assert.equal(req.session.oauth.user.id, 'u1234');
+        assert.equal(req.session.oauth.user.username, 'bob');
       },
       'should set res on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.res);
-        assert.isTrue(req.oauth.res.allow);
+        assert.isObject(req.session.oauth.res);
+        assert.isTrue(req.session.oauth.res.allow);
       },
       'should redirect to callbackURL' : function(err, req, res, e) {
         assert.equal(res._redirect, 'http://example.com/auth/callback?oauth_token=aaaa-bbbb-cccc&oauth_verifier=barx');
@@ -822,10 +822,10 @@ vows.describe('userDecision').addBatch({
         req.session['authorize'] = {};
         req.session['authorize']['abc123'] = { protocol: 'oauth' };
         req.user = { id: 'u1234', username: 'bob' };
-        req.oauth = {};
-        req.oauth.transactionID = 'abc123';
-        req.oauth.callbackURL = 'http://example.com/auth/callback';
-        req.oauth.authz = { token: 'aaaa-bbbb-cccc' }
+        req.session.oauth = {};
+        req.session.oauth.transactionID = 'abc123';
+        req.session.oauth.callbackURL = 'http://example.com/auth/callback';
+        req.session.oauth.authz = { token: 'aaaa-bbbb-cccc' }
         
         var res = new MockResponse();
         res.done = function() {
@@ -848,13 +848,13 @@ vows.describe('userDecision').addBatch({
         assert.isUndefined(e);
       },
       'should set user on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.user);
-        assert.equal(req.oauth.user.id, 'u1234');
-        assert.equal(req.oauth.user.username, 'bob');
+        assert.isObject(req.session.oauth.user);
+        assert.equal(req.session.oauth.user.id, 'u1234');
+        assert.equal(req.session.oauth.user.username, 'bob');
       },
       'should set res on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.res);
-        assert.isFalse(req.oauth.res.allow);
+        assert.isObject(req.session.oauth.res);
+        assert.isFalse(req.session.oauth.res.allow);
       },
       'should redirect to callbackURL' : function(err, req, res, e) {
         assert.equal(res._redirect, 'http://example.com/auth/callback?oauth_problem=user_refused');
@@ -890,10 +890,10 @@ vows.describe('userDecision').addBatch({
         req.session['authorize'] = {};
         req.session['authorize']['abc123'] = { protocol: 'oauth' };
         req.user = { id: 'u1234', username: 'bob' };
-        req.oauth = {};
-        req.oauth.transactionID = 'abc123';
-        req.oauth.callbackURL = 'http://example.com/auth/callback';
-        req.oauth.authz = { token: 'aaaa-bbbb-cccc' }
+        req.session.oauth = {};
+        req.session.oauth.transactionID = 'abc123';
+        req.session.oauth.callbackURL = 'http://example.com/auth/callback';
+        req.session.oauth.authz = { token: 'aaaa-bbbb-cccc' }
         
         var res = new MockResponse();
         res.done = function() {
@@ -917,13 +917,13 @@ vows.describe('userDecision').addBatch({
         assert.equal(res._error.message, 'something went wrong');
       },
       'should set user on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.user);
-        assert.equal(req.oauth.user.id, 'u1234');
-        assert.equal(req.oauth.user.username, 'bob');
+        assert.isObject(req.session.oauth.user);
+        assert.equal(req.session.oauth.user.id, 'u1234');
+        assert.equal(req.session.oauth.user.username, 'bob');
       },
       'should set res on oauth transaction' : function(err, req, res, e) {
-        assert.isObject(req.oauth.res);
-        assert.isTrue(req.oauth.res.allow);
+        assert.isObject(req.session.oauth.res);
+        assert.isTrue(req.session.oauth.res.allow);
       },
       'should not redirect to callbackURL' : function(err, req, res, e) {
         assert.isUndefined(res._redirect);
@@ -960,10 +960,10 @@ vows.describe('userDecision').addBatch({
         req.session['authorize'] = {};
         req.session['authorize']['abc123'] = { protocol: 'oauth' };
         req.user = { id: 'u1234', username: 'bob' };
-        req.oauth = {};
-        req.oauth.transactionID = 'abc123';
-        req.oauth.callbackURL = 'http://example.com/auth/callback';
-        req.oauth.authz = { token: 'aaaa-bbbb-cccc' }
+        req.session.oauth = {};
+        req.session.oauth.transactionID = 'abc123';
+        req.session.oauth.callbackURL = 'http://example.com/auth/callback';
+        req.session.oauth.authz = { token: 'aaaa-bbbb-cccc' }
         
         var res = new MockResponse();
         res.done = function() {
@@ -987,10 +987,10 @@ vows.describe('userDecision').addBatch({
         assert.equal(res._error.message, 'something went wrong');
       },
       'should not set user on oauth transaction' : function(err, req, res, e) {
-        assert.isUndefined(req.oauth.user);
+        assert.isUndefined(req.session.oauth.user);
       },
       'should not set res on oauth transaction' : function(err, req, res, e) {
-        assert.isUndefined(req.oauth.res);
+        assert.isUndefined(req.session.oauth.res);
       },
       'should not redirect to callbackURL' : function(err, req, res, e) {
         assert.isUndefined(res._redirect);
@@ -1020,10 +1020,10 @@ vows.describe('userDecision').addBatch({
         req.query = {};
         req.body = {};
         req.user = { id: 'u1234', username: 'bob' };
-        req.oauth = {};
-        req.oauth.transactionID = 'abc123';
-        req.oauth.callbackURL = 'http://example.com/auth/callback';
-        req.oauth.authz = { token: 'aaaa-bbbb-cccc' }
+        req.session.oauth = {};
+        req.session.oauth.transactionID = 'abc123';
+        req.session.oauth.callbackURL = 'http://example.com/auth/callback';
+        req.session.oauth.authz = { token: 'aaaa-bbbb-cccc' }
         
         var res = new MockResponse();
         res.done = function() {
@@ -1047,10 +1047,10 @@ vows.describe('userDecision').addBatch({
         assert.equal(res._error.message, 'OAuth service provider requires session support.');
       },
       'should not set user on oauth transaction' : function(err, req, res, e) {
-        assert.isUndefined(req.oauth.user);
+        assert.isUndefined(req.session.oauth.user);
       },
       'should not set res on oauth transaction' : function(err, req, res, e) {
-        assert.isUndefined(req.oauth.res);
+        assert.isUndefined(req.session.oauth.res);
       },
       'should not redirect to callbackURL' : function(err, req, res, e) {
         assert.isUndefined(res._redirect);
@@ -1078,10 +1078,10 @@ vows.describe('userDecision').addBatch({
         req.body = {};
         req.session = {};
         req.user = { id: 'u1234', username: 'bob' };
-        req.oauth = {};
-        req.oauth.transactionID = 'abc123';
-        req.oauth.callbackURL = 'http://example.com/auth/callback';
-        req.oauth.authz = { token: 'aaaa-bbbb-cccc' }
+        req.session.oauth = {};
+        req.session.oauth.transactionID = 'abc123';
+        req.session.oauth.callbackURL = 'http://example.com/auth/callback';
+        req.session.oauth.authz = { token: 'aaaa-bbbb-cccc' }
         
         var res = new MockResponse();
         res.done = function() {
@@ -1105,10 +1105,10 @@ vows.describe('userDecision').addBatch({
         assert.equal(res._error.message, 'Invalid OAuth session key.');
       },
       'should not set user on oauth transaction' : function(err, req, res, e) {
-        assert.isUndefined(req.oauth.user);
+        assert.isUndefined(req.session.oauth.user);
       },
       'should not set res on oauth transaction' : function(err, req, res, e) {
-        assert.isUndefined(req.oauth.res);
+        assert.isUndefined(req.session.oauth.res);
       },
       'should not redirect to callbackURL' : function(err, req, res, e) {
         assert.isUndefined(res._redirect);
@@ -1137,10 +1137,10 @@ vows.describe('userDecision').addBatch({
         req.session['authorize'] = {};
         req.session['authorize']['abc123'] = { protocol: 'oauth' };
         req.user = { id: 'u1234', username: 'bob' };
-        req.oauth = {};
-        req.oauth.transactionID = 'abc123';
-        req.oauth.callbackURL = 'http://example.com/auth/callback';
-        req.oauth.authz = { token: 'aaaa-bbbb-cccc' }
+        req.session.oauth = {};
+        req.session.oauth.transactionID = 'abc123';
+        req.session.oauth.callbackURL = 'http://example.com/auth/callback';
+        req.session.oauth.authz = { token: 'aaaa-bbbb-cccc' }
         
         var res = new MockResponse();
         res.done = function() {
@@ -1164,10 +1164,10 @@ vows.describe('userDecision').addBatch({
         assert.equal(res._error.message, 'OAuth service provider requires body parsing.');
       },
       'should not set user on oauth transaction' : function(err, req, res, e) {
-        assert.isUndefined(req.oauth.user);
+        assert.isUndefined(req.session.oauth.user);
       },
       'should not set res on oauth transaction' : function(err, req, res, e) {
-        assert.isUndefined(req.oauth.res);
+        assert.isUndefined(req.session.oauth.res);
       },
       'should not redirect to callbackURL' : function(err, req, res, e) {
         assert.isUndefined(res._redirect);

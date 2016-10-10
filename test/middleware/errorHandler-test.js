@@ -225,7 +225,7 @@ vows.describe('errorHandler').addBatch({
       topic: function(errorHandler) {
         var self = this;
         var req = new MockRequest();
-        req.oauth = { callbackURL: 'http://example.com/auth/callback' };
+        req.session.oauth = { callbackURL: 'http://example.com/auth/callback' };
         
         var res = new MockResponse();
         res.done = function() {
@@ -259,7 +259,7 @@ vows.describe('errorHandler').addBatch({
       topic: function(errorHandler) {
         var self = this;
         var req = new MockRequest();
-        req.oauth = { callbackURL: 'http://example.com/auth/callback' };
+        req.session.oauth = { callbackURL: 'http://example.com/auth/callback' };
         
         var res = new MockResponse();
         res.done = function() {
@@ -327,7 +327,7 @@ vows.describe('errorHandler').addBatch({
       topic: function(errorHandler) {
         var self = this;
         var req = new MockRequest();
-        req.oauth = {};
+        req.session.oauth = {};
         
         var res = new MockResponse();
         res.done = function() {
@@ -362,7 +362,7 @@ vows.describe('errorHandler').addBatch({
       topic: function(errorHandler) {
         var self = this;
         var req = new MockRequest();
-        req.oauth = { callbackURL: 'oob' };
+        req.session.oauth = { callbackURL: 'oob' };
         
         var res = new MockResponse();
         res.done = function() {
@@ -397,7 +397,7 @@ vows.describe('errorHandler').addBatch({
       topic: function(errorHandler) {
         var self = this;
         var req = new MockRequest();
-        req.oauth = { callbackURL: 'http://example.com/auth/callback' };
+        req.session.oauth = { callbackURL: 'http://example.com/auth/callback' };
         
         var res = new MockResponse();
         res.done = function() {

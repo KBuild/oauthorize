@@ -154,7 +154,7 @@ exports.userAuthorization = [
     });
   }),
   function(req, res){
-    res.render('dialog', { transactionID: req.oauth.transactionID, user: req.user, client: req.oauth.client });
+    res.render('dialog', { transactionID: req.session.oauth.transactionID, user: req.user, client: req.session.oauth.client });
   }
 ]
 

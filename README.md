@@ -82,8 +82,8 @@ the user authorization endpoint.
         });
       }),
       function(req, res){
-        res.render('dialog', { transactionID: req.oauth.transactionID,
-                               client: req.oauth.client, user: req.user });
+        res.render('dialog', { transactionID: req.session.oauth.transactionID,
+                               client: req.session.oauth.client, user: req.user });
       });
 
 The application is responsible for authenticating the user (in this case, using
