@@ -41,9 +41,9 @@ vows.describe('requestToken').addBatch({
         var self = this;
         var req = new MockRequest();
         req.user = { id: 'client-1234' };
-        req.session = {};
-        req.session.oauth = {};
-        req.session.oauth.callbackURL = 'http://www.example.com/auth/callback'
+        req.authInfo = {};
+        req.authInfo.oauth = {};
+        req.authInfo.oauth.callbackURL = 'http://www.example.com/auth/callback'
         
         var res = new MockResponse();
         res.done = function() {
@@ -88,9 +88,9 @@ vows.describe('requestToken').addBatch({
         var self = this;
         var req = new MockRequest();
         req.user = { id: 'client-1234' };
-        req.session = {};
-        req.session.oauth = {};
-        req.session.oauth.callbackURL = 'http://www.example.com/auth/callback'
+        req.authInfo = {};
+        req.authInfo.oauth = {};
+        req.authInfo.oauth.callbackURL = 'http://www.example.com/auth/callback'
         
         var res = new MockResponse();
         res.done = function() {
@@ -142,9 +142,9 @@ vows.describe('requestToken').addBatch({
         var self = this;
         var req = new MockRequest();
         req.user = { id: 'client-1234' };
-        req.session = {};
-        req.session.oauth = {};
-        req.session.oauth.callbackURL = 'http://www.example.com/auth/callback';
+        req.authInfo = {};
+        req.authInfo.oauth = {};
+        req.authInfo.oauth.callbackURL = 'http://www.example.com/auth/callback';
         req.query = {};
         req.query['scribble'] = 'scrobble';
         
@@ -191,9 +191,9 @@ vows.describe('requestToken').addBatch({
         var self = this;
         var req = new MockRequest();
         req.client = { id: 'client-1234' };
-        req.session = {};
-        req.session.oauth = {};
-        req.session.oauth.callbackURL = 'http://www.example.com/auth/callback'
+        req.authInfo = {};
+        req.authInfo.oauth = {};
+        req.authInfo.oauth.callbackURL = 'http://www.example.com/auth/callback'
         
         var res = new MockResponse();
         res.done = function() {
@@ -234,9 +234,9 @@ vows.describe('requestToken').addBatch({
         var self = this;
         var req = new MockRequest();
         req.user = { id: 'client-1234' };
-        req.session = {};
-        req.session.oauth = {};
-        req.session.oauth.callbackURL = 'http://www.example.com/auth/callback'
+        req.authInfo = {};
+        req.authInfo.oauth = {};
+        req.authInfo.oauth.callbackURL = 'http://www.example.com/auth/callback'
         
         var res = new MockResponse();
         res.done = function() {
@@ -274,9 +274,9 @@ vows.describe('requestToken').addBatch({
         var self = this;
         var req = new MockRequest();
         req.user = { id: 'client-1234' };
-        req.session = {};
-        req.session.oauth = {};
-        req.session.oauth.callbackURL = 'http://www.example.com/auth/callback'
+        req.authInfo = {};
+        req.authInfo.oauth = {};
+        req.authInfo.oauth.callbackURL = 'http://www.example.com/auth/callback'
         
         var res = new MockResponse();
         res.done = function() {
@@ -319,9 +319,9 @@ vows.describe('requestToken').addBatch({
         var self = this;
         var req = new MockRequest();
         req.user = { id: 'client-1234' };
-        req.session = {};
-        req.session.oauth = {};
-        req.session.oauth.callbackURL = 'http://www.example.com/auth/callback';
+        req.authInfo = {};
+        req.authInfo.oauth = {};
+        req.authInfo.oauth.callbackURL = 'http://www.example.com/auth/callback';
         req.query = {};
         req.query['scribble'] = 'scrobble';
         
@@ -347,7 +347,7 @@ vows.describe('requestToken').addBatch({
     },
   },
   
-  'middleware that handles a request without session': {
+  'middleware that handles a request without authInfo': {
     topic: function() {
       return requestToken(function(consumer, callbackURL, done) {
         done(null, 'a1b2c3', 'shh-its-secret');
